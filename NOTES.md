@@ -13,3 +13,19 @@ Four distinctions I noticed:
 3. Product complaints vs company complaints. "The new UI has too many clicks" targets the product. "Anthropic told the IMF something alarming" targets the company. Same negative energy, different object.
 
 4. Reusable things vs one-off results. Some posts share a tool, workflow, or tip others can actually use. Others share a cool screenshot that invites upvotes but not imitation.
+
+## Milestone 2: Labels
+
+1. showcase — A post where someone shows off something they made with Claude. A game, a tool, a site, a visual, anything with a demo or result attached.
+   Example 1: "Procedural generation with Opus is insane. This entire game is 20MB."
+   Example 2: "I built an FFT ocean renderer for Godot 4.7 (C#) with Claude Code, starting from a single design doc"
+
+2. help — A post where someone is stuck, confused, or trying to confirm whether a problem is on their end or Claude's.
+   Example 1: "This week's Claude Reset - Anyone else noticing unusually high usage all of a sudden?"
+   Example 2: "Anyone else's Claude suddenly started using 'read-only' for anything that could involve a write?"
+
+3. discussion — A post sharing a take, reaction, tip, news, or opinion about Claude or Anthropic without showing a build or asking for help.
+   Example 1: "Anthropic told the IMF that it expects Claude to lead 80-90% of frontier model training by next year"
+   Example 2: "3 small Claude Code habits from other people's setups that I liked"
+
+Boundary rule: If the post includes a working output like a demo, a screenshot of the thing running, or a playable link, it is showcase. If it describes a method or opinion without showing a finished result, it is discussion, even if the author built something to arrive at that opinion.
