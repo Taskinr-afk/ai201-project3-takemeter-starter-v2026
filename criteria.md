@@ -53,59 +53,51 @@ whether you hit them:
 
 ## 1.
 
-<!-- Your criterion. It must name a number. -->
-
-
+Overall accuracy hits at least 0.70 on the held out set.
 
 **Why this target:**
 
-
+Three labels means random chance lands around 0.33, so 0.70 is more than double that without being unrealistically high for a first pass.
 
 ---
 
 ## 2.
 
-<!-- Your criterion. -->
-
-
+Every label has an F1 of at least 0.50.
 
 **Why this target:**
 
-
+If the model nails showcase and discussion but misses help posts 80% of the time, that's a broken classifier even if the total accuracy looks fine.
 
 ---
 
 ## 3.
 
-<!-- Your criterion. -->
-
-
+No single label makes up more than 70% of the dataset.
 
 **Why this target:**
 
-
+If showcase or discussion dominates everything, the model could just guess one label and look accurate. 70% cap forces real distribution across all three.
 
 ---
 
 ## 4.
 
-<!-- Your criterion. -->
-
-
+A second labeler agrees on at least 70% of the same posts.
 
 **Why this target:**
 
-
+If two people can't agree on the labels, the categories are too vague to train on. 70% accounts for genuine edge cases like the boundary posts above while still proving the definitions are usable.
 
 ---
 
 ## 5.
 
-<!-- Your criterion. -->
-
-
+Posts where the model's confidence is above 0.90 are correct at least 80% of the time.
 
 **Why this target:**
+
+High confidence should mean high accuracy. If the model is wrong 30% of the time even when it says it's sure, the confidence scores are meaningless and can't be trusted for downstream filtering.
 
 
 
