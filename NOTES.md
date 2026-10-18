@@ -29,3 +29,11 @@ Four distinctions I noticed:
    Example 2: "3 small Claude Code habits from other people's setups that I liked"
 
 Boundary rule: If the post includes a working output like a demo, a screenshot of the thing running, or a playable link, it is showcase. If it describes a method or opinion without showing a finished result, it is discussion, even if the author built something to arrive at that opinion.
+
+## Milestone 4: Hard cases
+
+1. "Can we please start building apps and systems to save humanity." I went back and forth between showcase and discussion. The author actually lists four things they built, so there is working output. But the whole point of the post is telling the community to stop making clones. The projects are just backup for the argument. I went discussion because the post is trying to start a conversation, not show off a build.
+
+2. "Claude and Codex debate #3." This one was tricky because the author released a new version of Hellhound with a real feature (text to speech). But the post itself is framed around a philosophy question about AI consciousness. The tool is just the vehicle. I went discussion because the debate is what the post is about, not the app update.
+
+3. "Opus 5.5 Taking so long and token usage." The author says they are not complaining and frames it like sharing an observation. But they also straight up ask if anyone found workarounds. That is asking for a fix. I went help because the real reason they posted is to solve a problem, even if the tone is casual.
