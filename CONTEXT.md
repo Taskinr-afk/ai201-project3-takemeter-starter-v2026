@@ -12,7 +12,7 @@ Key files: takemeter.ipynb (training notebook), baseline.py (zero-shot baseline)
 
 ## Where we are right now
 
-Milestone 1 done. Community is r/claude. Four candidate distinctions written in NOTES.md. Moving to Milestone 2.
+Unit 5 complete. All six milestones done. Community is r/claude. Labels: showcase, help, discussion. 200 posts labeled, training run finished (accuracy 0.700, macro F1 0.694). README filled in. Ready for Unit 6.
 
 ## Working agreement
 

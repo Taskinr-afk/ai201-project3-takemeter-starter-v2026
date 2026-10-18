@@ -39,140 +39,115 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
-
-
+TakeMeter is a text classifier that sorts posts from r/claude into three categories: showcase (someone showing what they built), help (someone stuck or asking a question), and discussion (opinions, news, tips, or reactions). It was trained on 200 hand-labeled posts using distilbert-base-uncased.
 
 ---
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### `showcase`
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
-
-### `label_one`
-
-**Definition:**
+**Definition:** A post where someone shows off something they made with Claude. A game, a tool, a site, a visual, anything with a demo or result attached.
 
 **Example 1:**
->
+> Procedural generation with Opus is insane. This entire game is 20MB.
 
 **Example 2:**
->
+> I built an FFT ocean renderer for Godot 4.7 (C#) with Claude Code, starting from a single design doc
 
-### `label_two`
+### `help`
 
-**Definition:**
+**Definition:** A post where someone is stuck, confused, or trying to confirm whether a problem is on their end or Claude's.
 
 **Example 1:**
->
+> This week's Claude Reset - Anyone else noticing unusually high usage all of a sudden?
 
 **Example 2:**
->
+> Anyone else's Claude suddenly started using 'read-only' for anything that could involve a write?
+
+### `discussion`
+
+**Definition:** A post sharing a take, reaction, tip, news, or opinion about Claude or Anthropic without showing a build or asking for help.
+
+**Example 1:**
+> Anthropic told the IMF that it expects Claude to lead 80-90% of frontier model training by next year
+
+**Example 2:**
+> 3 small Claude Code habits from other people's setups that I liked
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** showcase and discussion
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
-
-
+**The decision rule I used every time:** If the post includes a working output like a demo, a screenshot of the thing running, or a playable link, it is showcase. If it describes a method or opinion without showing a finished result, it is discussion, even if the author built something to arrive at that opinion.
 
 ---
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+**Where the posts came from:** r/claude (also known as r/ClaudeAI), sorted by top posts of the week and filtered across multiple post flairs.
 
-**Where the posts came from:**
-
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** I labeled the first 20 posts cold with no AI help. For the remaining 180, I chose every label myself. Claude handled browsing, collecting post text, and formatting entries into the CSV. I checked every row before adding it.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| discussion | 81 | 40% |
+| help | 66 | 33% |
+| showcase | 53 | 27% |
+| **Total** | 200 | 100% |
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
+> *The post:* "Can we please start building apps and systems to save humanity"
 >
-> *Could have been:*
+> *Could have been:* showcase or discussion. The author lists four things they built, so there is working output. But the whole point of the post is telling the community to stop making clones. The projects are just backup for the argument.
 >
-> *I chose, because:*
+> *I chose:* discussion, because the post is trying to start a conversation, not show off a build.
 
 **2.**
-> *The post:*
+> *The post:* "Claude and Codex debate #3: Would an AI need to be conscious to take over the world?"
 >
-> *Could have been:*
+> *Could have been:* showcase or discussion. The author released a new version of Hellhound with a real feature (text to speech). But the post frames itself as a philosophy debate about AI consciousness, using the tool as a vehicle.
 >
-> *I chose, because:*
+> *I chose:* discussion, because the debate is what the post is about, not the app update.
 
 **3.**
-> *The post:*
+> *The post:* "Opus 5.5 Taking so long and token usage"
 >
-> *Could have been:*
+> *Could have been:* help or discussion. The author says they are not complaining and frames it like sharing an observation. But they also straight up ask if anyone found workarounds.
 >
-> *I chose, because:*
+> *I chose:* help, because the real reason they posted is to solve a problem, even if the tone is casual.
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Base model:** distilbert-base-uncased
 
-**Base model:**
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128, seed 42
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Anything I changed from the defaults, and why:** Nothing changed. Used all defaults.
 
-**Anything I changed from the defaults, and why:**
+**Device:** CPU (torch 2.14.1+cpu)
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** train 139, val 31, test 30
 
+Test split per label: showcase 8, help 10, discussion 12. Showcase has only 8 in the test split, which will make its F1 jumpy across seeds.
 
+**Results:** accuracy 0.700, macro F1 0.694. Per label: showcase F1 0.667, help F1 0.706, discussion F1 0.710.
 
 ---
 
 ## How I Used AI
 
-<!-- Two specific moments — what you asked, what came back, what you changed.
+**Moment 1.** I started by writing three label definitions (showcase, help, discussion) and a boundary rule. To test whether the definitions were tight enough, I gave Claude my labels and asked it to generate eight edge-case posts that sit right on the boundary between two labels. All eight classified cleanly under the definitions, so I kept them as written and moved on to labeling.
 
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
+**Moment 2.** I labeled the first 20 posts cold with no AI involvement. For the remaining 180, I still chose every label myself, but I used Claude to browse r/ClaudeAI, pull post text, and format each entry into the CSV. I gave it the post text and my label, and it built the row. I checked every entry before adding it to the final file.
 
-**Moment 1**
-
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
-
-**Moment 2**
-
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
-
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** The first 20 posts were labeled without any AI. The remaining 180 were labeled by me. Claude handled data collection and formatting only. I did not use AI to suggest or influence any labels.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
