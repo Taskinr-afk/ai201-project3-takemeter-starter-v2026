@@ -217,22 +217,19 @@ Fine tuning added the most where the task requires understanding the boundaries 
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | >= 0.70 | MISSED | Got 0.700, 0.533, and 0.600 across three runs. Needed all three to hit 0.70. Only one did. |
+| 2 | Every label F1 | >= 0.50 | MISSED | Showcase scored 0.000 on seed 7 and 0.500 on seed 2024. Two of three seeds failed. |
+| 3 | No label > 70% of dataset | <= 70% | MET | The split is 40/33/27. No label comes close to 70%. |
+| 4 | Second labeler agreement | >= 70% | MET | 30/30 agreement with staff (100%). |
+| 5 | High confidence correct | >= 80% when confidence > 0.90 | MISSED | The model's confidence scores barely vary (0.38 to 0.41 range), so almost nothing even counts as high confidence. The metric does not work with this model's output. |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+**Criterion 1 (overall accuracy, MISSED).** Accuracy swung from 0.700 to 0.533 across seeds, a spread of 0.167. The dataset has only 200 posts and the test split is 30 posts, so each seed draws a very different test set. Showcase has only 8 posts in each test split, making the numbers unstable. The cause is dataset size, not labeling. My agreement report (30/30 with staff) rules out inconsistent labeling as the source.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+**Criterion 2 (every label F1 >= 0.50, MISSED).** Showcase F1 hit 0.000 on seed 7, meaning the model predicted zero showcase posts correctly on that split. The confusion matrix shows showcase posts being called discussion (4 on seed 42, 6 on seed 7, 5 on seed 2024). This is the showcase/discussion boundary, which is also the hardest boundary in my own taxonomy. My agreement report cannot directly test this because the staff taxonomy uses different labels (analysis/hot_take/reaction), but 100% staff agreement suggests I apply written rules consistently. The problem is more likely that showcase has only 53 examples (27% of data), and with only 8 in each test split the F1 is extremely volatile.
+
+**Criterion 5 (high confidence correct >= 80%, MISSED).** The model's mean confidence when right (0.38) and when wrong (0.39) are nearly identical. The confidence scores are not meaningful. This is a known limitation of distilbert-base-uncased on small datasets. With only 200 training examples and 3 epochs, the model has not learned to calibrate its confidence. This criterion was not broken in how it was written, but the model architecture and dataset size make it unreachable. I would need either a larger dataset or a calibration step after training.
 
 
 
