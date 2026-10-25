@@ -246,47 +246,17 @@ Fine tuning added the most where the task requires understanding the boundaries 
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+**Agreement rate:** 30 / 30 = 100%
 
 **Disagreements**
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
+None. I matched staff on every post.
 
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
+The staff taxonomy has three clean clusters. Posts 1 through 10 all have checkable facts doing load-bearing work. Posts 11 through 20 all make confident claims with no evidence. Posts 21 through 30 all report immediate personal experience. The decision rules in staff_taxonomy.md are specific enough that the borderline cases (sp_005, sp_010, sp_014, sp_019, sp_020, sp_028, sp_029) each resolve clearly under one of the three numbered rules. sp_014 was the hardest call because it contains a real number (3%), but rule 1 says the fact has to carry the argument, and "so obviously" does the carrying instead of the stat, making it hot_take.
 
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
+**What this tells me about my own 200 labels:**
 
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**What the pattern in my disagreements tells me:**
+100% agreement on someone else's taxonomy suggests I can apply written definitions consistently. That does not prove my own definitions are equally tight, but it does mean the source of any model errors in my trained classifier is more likely the boundary definitions themselves or the size of the dataset than inconsistent labeling on my part.
 
 
 
