@@ -188,27 +188,23 @@ Fine tuning added the most where the task requires understanding the boundaries 
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | >= 0.70 | 0.700 | 0.533 | 0.600 | MISSED |
+| 2. Every label F1 | >= 0.50 | all >= 0.667 | showcase 0.000 | showcase 0.500 | MISSED |
+| 3. No label > 70% of dataset | <= 70% | 40/33/27 | 40/33/27 | 40/33/27 | MET |
+| 4. Second labeler agreement | >= 70% | (tested in agreement report) | -- | -- | (pending) |
+| 5. High confidence correct | >= 80% when > 0.90 | 0.400 | (see json) | (see json) | MISSED |
 
 ### Confusion matrix
 
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
-
-| true \ predicted |  |  |  |
+| true \ predicted | showcase | help | discussion |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **showcase** | 4 | 0 | 4 |
+| **help** | 0 | 6 | 4 |
+| **discussion** | 0 | 1 | 11 |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
+
+4 real showcase posts were called discussion, and 0 went the other way. The same number of real help posts (4) were also called discussion. The model leans toward discussion when it is unsure, which makes sense because discussion is the largest label in the training data (40%). The showcase to discussion direction is the worst because the model never learned to separate a post showing a build from a post talking about one without a demo.
 
 
 
