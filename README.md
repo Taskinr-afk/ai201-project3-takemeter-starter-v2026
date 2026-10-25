@@ -263,22 +263,29 @@ The staff taxonomy has three clean clusters. Posts 1 through 10 all have checkab
 
 **What I changed:**
 
+Increased training epochs from 3 to 5. Everything else stayed the same.
+
 **Which diagnosis pointed at it:**
 
-### Run Log — After
+The training loss at 3 epochs was still around 1.0, which is close to the starting loss for a 3-class problem (ln(3) = 1.099). The model had barely learned anything by the time training stopped. The diagnosis for criterion 2 showed showcase F1 hitting 0.000 on seed 7, meaning the model completely ignored the smallest label. More epochs give the model more passes over the 53 showcase examples it has.
+
+### Run Log -- After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | >= 0.70 | 0.667 | 0.733 | 0.567 | MISSED |
+| 2. Every label F1 | >= 0.50 | all >= 0.643 | all >= 0.667 | all >= 0.522 | MET |
+| 3. No label > 70% of dataset | <= 70% | 40/33/27 | 40/33/27 | 40/33/27 | MET |
+| 4. Second labeler agreement | >= 70% | 100% | -- | -- | MET |
+| 5. High confidence correct | >= 80% when > 0.90 | (still not meaningful) | -- | -- | MISSED |
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+Yes. The biggest improvement was showcase F1, which went from 0.667/0.000/0.500 to 0.667/0.667/0.625. On seed 7 the model went from predicting zero showcase posts correctly to getting most of them. Showcase F1 spread shrank from 0.667 to 0.042, meaning the results are now stable across seeds for that label.
+
+Criterion 2 flipped from MISSED to MET. Every label now hits at least 0.50 F1 on all three seeds. Criterion 1 is still missed because accuracy on seed 2024 dropped to 0.567, but the model is now learning all three labels instead of defaulting to discussion when unsure.
+
+The tradeoff: overall accuracy on seed 42 dropped from 0.700 to 0.667, which means the model traded some discussion accuracy for better showcase and help recall. That is a better model even if the top-line number is lower on one seed.
 
 
 
