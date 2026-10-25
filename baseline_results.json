@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.6333333333333333,
+    "f1_macro": 0.5879917184265011,
+    "per_label": {
+      "discussion": {
+        "precision": 1.0,
+        "recall": 0.16666666666666666,
+        "f1": 0.2857142857142857,
+        "support": 12
+      },
+      "help": {
+        "precision": 0.7692307692307693,
+        "recall": 1.0,
+        "f1": 0.8695652173913044,
+        "support": 10
+      },
+      "showcase": {
+        "precision": 0.4666666666666667,
+        "recall": 0.875,
+        "f1": 0.608695652173913,
+        "support": 8
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Anyone else on Claude Team Premium missing the overall weekly usage meter? Only sees 5-hour and Fable limits, no weekly meter.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Did Claude change since 4.6? A short video essay analyzing changes. Shares a take with a produced output.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Almost Television, Ep. 2: Not Again. A weekly puppet sketch show written, directed and acted by Claude agents.",
+      "gold": "showcase",
+      "predicted": "help"
+    },
+    {
+      "text": "Whatever happened to Security Nightmare Mythos? Asking about a previous incident.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "I made a browser FPS with Claude Code, every 3D model in it is code. Not a game dev, started with Opus 5.5 drop. Every visual asset is generated in code, no imported models. Three.js, physics, playable on PC/phone.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Fable 5.5?? Asking about an upcoming model release.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Hey Opus 5.5 can you build me a 24/7 live streaming news network.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    },
+    {
+      "text": "I launched a Minecraft server host without writing code by hand. Cubepals went live. 535 merged PRs, 1000+ commits across 6 repos in 4 weeks. Local Claude session manages cloud sessions.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Just another Opus gushing thread. Praise post, no build shown. Pure positive reaction.",
+      "gold": "discussion",
+      "predicted": "discussion"
+    },
+    {
+      "text": "I built a fake live cable TV network out of the Internet Archive's ephemeral media.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Realizing that your job is forwarding instructions from your boss to Claude and taking Claude's responses to send them back to your boss.",
+      "gold": "discussion",
+      "predicted": "help"
+    },
+    {
+      "text": "A Github tweet leaked the EAP name for what is likely the next model: Odango.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "The preserve thinking feature breaks context management and degrades Claude's performance. Plugin developer explaining how preserve thinking invalidates thinking blocks and hurts context management. Technical feedback.",
+      "gold": "discussion",
+      "predicted": "help"
+    },
+    {
+      "text": "Claude is BACK!",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Agent Mode is now live on InstaLanding.ai. Your coding agent can now use an entire open source design library. What if we stopped making developers browse template libraries and started making template libraries accessible directly to AI coding agents? I've built a free, open source library of landing pages built with HTML, CSS, and JavaScript. You can give your agent an actual working design instead of trying to describe one.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    },
+    {
+      "text": "This week's Claude Reset - Anyone else noticing unusually high usage all of a sudden? Pro plan user hit 30% weekly limit in 2 sessions after upgrading to annual plan, asking if others see the same.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Does anyone else feel like Opus 5.5 is on a completely different level from every other model? I've been using Opus 5.5 for coding, and honestly it feels like it's in a different league. Before Opus 5.5, if my expectations were a 10/10, I'd usually get an 8 or 9. But with Opus 5.5 it often feels more like a 15/10.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "considering going back to claude. Was using Codex, quality went downhill. Asking if Claude has a desktop app and what workflows people use. No coding experience with Claude recently.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Redesigning source control at Anthropic.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Does Claude Code find new bugs every time you ask it to review your code? Every time I ask Claude to review my code, it finds around 3 to 4 bugs. I fix them, ask it to review again, and somehow it finds another 3 to 4 bugs. Is Claude actually finding new issues each time, or is it just being overly critical?",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Did anyone else notice Buttery voice got flat and robotic? I measured the difference with Claude. Reporting a quality change in Claude's voice feature. Asking if others noticed.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Building a personal finance dashboard with Claude Code, but burning through limits every day. 10 days in, 2-3 full sessions per day, still no working app. Asking for help managing limits and scope.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Anthropic's monitor blocks about 1 in 47,000 actions from its internal agents. That still works out to roughly 21,000 a month. Sharing a stat from Anthropic.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Mind blown by Claude. Non-technical user tried Claude for the first time after seeing posts about AI's full potential. Pure reaction, no build, no question.",
+      "gold": "discussion",
+      "predicted": "discussion"
+    },
+    {
+      "text": "Auto Mode no longer working after the latest Update. Reporting a bug after an update.",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "Claude projects (beta) vs Claude code?",
+      "gold": "help",
+      "predicted": "help"
+    },
+    {
+      "text": "That didn't take long - Claude Haiku 4.5 is leaving the model selector October 29th. Community consensus is Haiku 5.5 is better and cheaper anyway.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Week 11 of making my fishing game with the help of AI.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Just got access to Mythos 5.1.",
+      "gold": "discussion",
+      "predicted": "showcase"
+    },
+    {
+      "text": "Persistent memory for Claude Code and Claude Desktop - an MCP server I built for it. CogniCore, open-source MCP server giving Claude persistent memory. MIT licensed, hosted version available.",
+      "gold": "showcase",
+      "predicted": "showcase"
+    }
+  ]
+}

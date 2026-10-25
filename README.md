@@ -163,18 +163,19 @@ Test split per label: showcase 8, help 10, discussion 12. Showcase has only 8 in
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.633 | 0.700 | +0.067 |
+| Macro F1 | 0.588 | 0.694 | +0.106 |
+| F1 -- `discussion` | 0.286 | 0.710 | +0.424 |
+| F1 -- `help` | 0.870 | 0.706 | -0.164 |
+| F1 -- `showcase` | 0.609 | 0.667 | +0.058 |
 
 **What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
+
+I predicted the trained model would beat the baseline most on discussion, since that label depends on knowing what showcase and help are not. A general model with no examples would struggle with a label defined by exclusion.
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+
+Fine tuning added the most where the task requires understanding the boundaries between labels rather than surface keywords. The baseline could spot help posts from question words and showcase from build related terms, but discussion is defined by exclusion (not a build, not asking for help), which only learned examples could teach. The baseline actually outperformed on help, likely because help posts contain obvious distress signals that a general NLI model picks up naturally.
 
 
 
