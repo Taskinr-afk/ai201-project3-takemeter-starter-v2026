@@ -149,6 +149,8 @@ Test split per label: showcase 8, help 10, discussion 12. Showcase has only 8 in
 
 **Pre-labelling disclosure:** The first 20 posts were labeled without any AI. The remaining 180 were labeled by me. Claude handled data collection and formatting only. I did not use AI to suggest or influence any labels.
 
+**Moment 3 (Unit 6).** Claude ran the baseline, the three-seed training, and the improvement run as Python scripts. It also labeled the 30 staff posts under the staff taxonomy and wrote the analysis sections of the README. I reviewed every label and every diagnosis before committing.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -293,13 +295,13 @@ The tradeoff: overall accuracy on seed 42 dropped from 0.700 to 0.667, which mea
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
+**Criterion 1 (overall accuracy >= 0.70).** Still missed. Accuracy hit 0.733 on seed 7 but only 0.567 on seed 2024. The test split is 30 posts, so a couple of extra misses swing accuracy by 7 points. I would add more labeled posts to make the splits larger and more stable. I stopped because the assignment allows one change only.
 
+**Criterion 5 (high confidence correct >= 80%).** Still missed. The model's confidence scores sit in a narrow band around 0.38 to 0.41 whether the prediction is right or wrong, so there is no threshold that separates confident from unconfident predictions. I would need either a calibration step after training or a different model architecture that produces more spread in its softmax outputs. I stopped because that is a second change.
 
+**The gap between what I meant my labels to capture and what the model learned:**
 
-**The gap between what I meant my labels to capture and what the model
-learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
+I meant showcase to mean posts with a working demo or result attached, but the confusion matrix shows the model calling real showcase posts discussion whenever the post talks about what was built rather than just linking it. The model learned to separate help from the other two reasonably well, but it did not learn the specific rule that a finished output makes something showcase rather than discussion.
 
 
 
